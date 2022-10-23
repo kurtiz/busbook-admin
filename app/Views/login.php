@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Login | MiCasa cPanel</title>
+        <title>Login | BusBook cPanel</title>
         <meta property="og:image" content="<?= base_url(); ?>/public/src/img/brand-white.png" />
-        <meta name="description" content="Login to your store to unlock the incredible features that awaits you.">
+        <meta name="description" content="Login to your dashboard to unlock the incredible features that awaits you.">
         <meta name="keywords" content="">
 <!--        <link rel="manifest" href="--><?//=base_url(); ?><!--/public/manifest.json">-->
         <link rel="apple-touch-icon"href="<?php base_url(); ?>public/favicon.ico" type="image/x-icon" />
@@ -52,16 +52,19 @@
                             <p>Happy to see you again!</p>
                             <?= form_open(current_url(), ['id' => 'login_form'])?>
                                 <div class="form-group">
-                                    <input type="text" autofocus id="username" name="username" class="form-control form-control-lowercase" placeholder="username" >
+                                    <input type="email" required autofocus id="email" name="email" class="form-control form-control-lowercase" placeholder="username" >
                                     <i class="ik ik-user"></i>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" id="password" name="password" class="form-control"
-                                           data-toggle="tooltip" data-placement="top"
+                                           data-toggle="tooltip" data-placement="top" required
                                            title="Tap on icon to toggle password visibility" placeholder="password">
                                     <i class="ik ik-lock" id="passLock"></i>
                                 </div>
-                                <div class="row">
+
+                            <?php
+                            /*
+                                 <div class="row">
                                     <div class="col text-left">
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
@@ -71,7 +74,8 @@
                                     <div class="col text-right">
                                         <a href="<?=base_url()?>/forgotpassword">Forgot Password ?</a>
                                     </div>
-                                </div>
+                                </div> */
+                            ?>
                                 <div class="sign-btn text-center">
                                     <button class="btn btn-theme" id="sign_in" type="button">Sign In</button>
                                 </div>
@@ -81,7 +85,6 @@
                 </div>
             </div>
         </div>
-        <script src="<?php base_url(); ?>/sw.js"></script>
         <script src="<?php base_url(); ?>public/src/js/vendor/jquery-3.3.1.min.js"></script>
         <script src="<?php base_url(); ?>public/plugins/popper.js/dist/umd/popper.min.js"></script>
         <script src="<?php base_url(); ?>public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -90,21 +93,21 @@
         <script src="<?php base_url(); ?>public/js/jquery.tabbale.js"></script>
         <script>
 
-            let username = $("#username")
+            let email = $("#email")
             let password = $("#password")
             // NOTE trying to validate provided credentials before sending the post request
             // SECTION [username_validate] validates username 
-            username.keypress(function(event) {
+            email.keypress(function(event) {
                 
                 // ANCHOR CHECKS IF THE KEYSTROKE PRESSED IS THE "enter" KEY
                 if (event.keyCode === 13) { 
                     
 
-                    if (username.val() === ""){
+                    if (email.val() === ""){
                         
                         $.toast({
                             heading: 'Error',
-                            text: 'You must enter username!',
+                            text: 'You must enter email!',
                             showHideTransition: 'fade',
                             icon: 'error',
                             color: '#f5365c',
@@ -146,15 +149,15 @@
             });
             // !SECTION
             
-            // SECTION [sign_in_validate] validates both password and username
+            // SECTION [sign_in_validate] validates both password and email
             $("#sign_in").on("click", function (event){
 
 
-                    if (username.val() === ""){
+                    if (email.val() === ""){
                         
                         $.toast({
                             heading: 'Error',
-                            text: 'You must enter username!',
+                            text: 'You must enter email!',
                             showHideTransition: 'fade',
                             icon: 'error',
                             color: '#f5365c',
@@ -206,10 +209,10 @@
             ?>
             
             // TODO HAVE TO UNCOMMENT THIS SECTION BELOW BEFORE PRODUCTION
-            // NOTE clears the console
-            // setTimeout(function (){
-            //     console.clear()
-            // }, 300)
+            // NOTE: clears the console
+            setTimeout(function (){
+                console.clear()
+            }, 300)
         </script>
         
         
