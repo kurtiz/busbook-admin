@@ -10,7 +10,7 @@
     class DashboardModel extends Model {
 
 
-        protected $tbl;
+        protected $tbl = "admin";
 
         /**
          *

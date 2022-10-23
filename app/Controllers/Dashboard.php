@@ -21,7 +21,7 @@
          * user id of the logged user
          * @var array|string|null
          */
-        public $user_id;
+        public $admin_id;
 
         /**
          * array of the data of the current logged user
@@ -34,7 +34,7 @@
          */
         public function __construct() {
             $this->dashModel = new DashboardModel();
-            $this->user_id = session()->get("user_id");
+            $this->admin_id = session()->get("admin_id");
             helper(['form']);
             session()->setTempdata('dashboard','active',1);
         }

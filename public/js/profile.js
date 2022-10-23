@@ -26,14 +26,12 @@ updateBtn.on("click",function(){
     let a = $("#fullname");
     let b = $("#email");
     let c = $("#mobile");
-    let d = $("#description");
 
     let fullname = a.val() ;
     let email = b.val();
     let mobile = c.val();
-    let description = d.val();
 
-    $.post( url,{fullname: fullname, email: email, mobile: mobile, description: description},
+    $.post( url,{fullname: fullname, email: email, mobile: mobile},
         function( data ) {
         data = JSON.parse(data);
         if (data.msg === "success"){
@@ -58,7 +56,6 @@ updateBtn.on("click",function(){
             $("#card-name").text(fullname);
             $("#card-email").text(email);
             $("#card-mobile").text(mobile);
-            $("#card-description").text(description);
 
 
 
