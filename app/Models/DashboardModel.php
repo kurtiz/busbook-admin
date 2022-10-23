@@ -23,7 +23,7 @@
          */
         public function getLoggedUserData(string $admin_id) {
             
-            $builder = $this->db->table("");
+            $builder = $this->db->table($this->tbl);
             $builder->where('admin_id',$admin_id);
             $result = $builder->get();
 
