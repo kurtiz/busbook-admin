@@ -982,18 +982,18 @@ if (! function_exists('route_to'))
 
 if (! function_exists('session'))
 {
-	/**
-	 * A convenience method for accessing the session instance,
-	 * or an item that has been set in the session.
-	 *
-	 * Examples:
-	 *    session()->set('foo', 'bar');
-	 *    $foo = session('bar');
-	 *
-	 * @param string $val
-	 *
-	 * @return Session|mixed|null
-	 */
+    /**
+     * A convenience method for accessing the session instance,
+     * or an item that has been set in the session.
+     *
+     * Examples:
+     *    session()->set('foo', 'bar');
+     *    $foo = session('bar');
+     *
+     * @param string|null $val
+     *
+     * @return Session|mixed|null
+     */
 	function session(string $val = null)
 	{
 		$session = Services::session();
