@@ -271,7 +271,7 @@
                             <div class="col-xl-12 col-md-12">
                                 <div class="card table-card">
                                     <div class="card-header">
-                                        <h3>Top 5 Products</h3>
+                                        <h3>Top 5 Destinations</h3>
                                         <div class="card-header-right">
                                             <ul class="list-unstyled card-option">
                                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -282,8 +282,8 @@
                                     </div>
                                     <div class="card-block">
                                         <div class="table-responsive">
-                                        <?php if (isset($productPerformance)): ?>
-                                            <?php if (is_array($productPerformance)): ?>
+                                        <?php if (isset($destinationPerformance)): ?>
+                                            <?php if (is_array($destinationPerformance)): ?>
                                             <table class="table table-hover mb-0">
                                                 <thead>
                                                     <tr>
@@ -295,7 +295,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php foreach ($productPerformance as $row): ?>
+                                                <?php foreach ($destinationPerformance as $row): ?>
                                                     <tr>
                                                         <td><?=$row->product?></td>
 <!--                                                        <td><img src="--><?php //base_url(); ?><!--public/img/widget/p1.jpg" alt="" class="img-fluid img-20"></td>-->
@@ -331,197 +331,14 @@
                                 </div>
                             </div>
                             <!-- !SECTION -->
-                            <!-- !SECTION New Customers and Top 5 Products-->
-
-                            <!-- Recent Activities for admin only
-                            <div class="col-md-12">
-                                <div class="card table-card">
-                                    <div class="card-header">
-                                        <h3>Recent Activities</h3>
-                                        <div class="card-header-right">
-                                            <ul class="list-unstyled card-option">
-                                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
-                                                <li><i class="ik ik-minus minimize-card"></i></li>
-                                                <li><i class="ik ik-x close-card"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-block">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Customer</th>
-                                                        <th>Company</th>
-                                                        <th>Lead Score</th>
-                                                        <th>Date</th>
-                                                        <th>Tags</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>Shirley Hoe</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , NY</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Pinterest</td>
-                                                        <td>223</td>
-                                                        <td>19-11-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-primary">Sketch</label>
-                                                            <label class="badge badge-primary">Ui</label>
-                                                        </td>
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/2.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>James Alexander</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , EL</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Facebook</td>
-                                                        <td>268</td>
-                                                        <td>19-11-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-primary">Ux</label>
-                                                            <label class="badge badge-danger">Ui</label>
-                                                            <label class="badge badge-danger">php</label>
-                                                        </td>
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>Shirley Hoe</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , NY</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Twitter</td>
-                                                        <td>293</td>
-                                                        <td>16-03-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-danger">Sketch</label>
-                                                            <label class="badge badge-primary">Ui</label>
-                                                        </td>
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>Shirley Hoe</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , NY</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Pinterest</td>
-                                                        <td>223</td>
-                                                        <td>19-11-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-primary">Ux</label>
-                                                            <label class="badge badge-success">Ui</label>
-                                                            <label class="badge badge-warning">php</label>
-                                                        </td>
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/2.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>James Alexander</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , EL</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Facebook</td>
-                                                        <td>268</td>
-                                                        <td>19-11-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-primary">Sketch</label>
-                                                            <label class="badge badge-primary">Ui</label>
-                                                        </td>
-
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-inline-block align-middle">
-                                                                <img src="<?php base_url(); ?>public/img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                                                                <div class="d-inline-block">
-                                                                    <h6>Shirley Hoe</h6>
-                                                                    <p class="text-muted mb-0">Sales executive , NY</p>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Twitter</td>
-                                                        <td>293</td>
-                                                        <td>16-03-2018</td>
-                                                        <td>
-                                                            <label class="badge badge-danger">Sketch</label>
-                                                            <label class="badge badge-primary">Ui</label>
-                                                        </td>
-                                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            End of Recent activity -->
-
                     </div>
                 </div>
             </div>
-            <?php
-                // include(APP_ROOT."/views/includes/right-sidebar.php");
-                // include(APP_ROOT."/views/includes/chatpanel.php");
-            ?>
-            <?= $this->include("widgets/right-sidebar"); ?>
-            <?= $this->include("widgets/chatpanel"); ?>
             <?= $this->include("widgets/footer"); ?>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterLabel">This is a test</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <h1>Welcome <?php //echo $user_info["name"]; ?> !</h1>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <?= $this->include("widgets/user_menu"); ?>
-
     <script src="<?=base_url(); ?>/public/src/js/vendor/jquery-3.3.1.min.js"></script>
-    <script>
-    </script>
     <script src="<?=base_url(); ?>/public/plugins/popper.js/dist/umd/popper.min.js"></script>
     <script src="<?=base_url(); ?>/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?=base_url(); ?>/public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
@@ -537,9 +354,6 @@
             addComma("comma")
         })
 
-        $("#currency-convert").on("click",  () => {
-            switchSymbol()
-        })
          <?php 
             if (!empty(session()->getTempdata('name'))): 
          ?>
