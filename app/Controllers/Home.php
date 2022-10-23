@@ -21,7 +21,7 @@ class Home extends BaseController
     {
         $data = [];
         if (session()->has('logged_user')) {
-            return redirect()->to(base_url() . '/testcontroller');
+            return redirect()->to(base_url() . '/dashboard');
         }
 
         if ($this->request->getMethod() == 'post') {
@@ -42,7 +42,7 @@ class Home extends BaseController
                     $this->session->set("user_id", $userdata['admin_id']);
                     $this->session->setTempdata("name", $userdata['admin_name'], 3);
 
-                    return redirect()->to(base_url() . '/testcontroller');
+                    return redirect()->to(base_url() . '/dashboard');
 
                 } else {
 
