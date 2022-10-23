@@ -39,7 +39,7 @@ class Home extends BaseController
                         hash("md5", $password) . hash("md4", $password)) == $userdata['admin_passkey']
                 ) {
                     $this->session->set("logged_user", $userdata['admin_email']);
-                    $this->session->set("user_id", $userdata['admin_id']);
+                    $this->session->set("admin_id", $userdata['admin_id']);
                     $this->session->setTempdata("name", $userdata['admin_name'], 3);
 
                     return redirect()->to(base_url() . '/dashboard');
