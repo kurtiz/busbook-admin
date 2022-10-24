@@ -1,12 +1,9 @@
 <?php
 
     namespace App\Controllers;
-    use App\Models\ProductsModel;
-    use App\Models\StorefrontModel;
-    use App\Models\StoreModel;
+    use App\Libraries\ActiveSession;
     use CodeIgniter\Controller;
     use App\Models\DashboardModel;
-    use App\Libraries\Overview;
     use CodeIgniter\HTTP\RedirectResponse;
 
     class Dashboard extends Controller{
@@ -42,9 +39,7 @@
 
         public function index() {
 
-            if(!session()->has("logged_user")) {
-                return redirect()->to(base_url());
-            }
+            (new ActiveSession)->check("logged_user");
 
             $data = [];
 

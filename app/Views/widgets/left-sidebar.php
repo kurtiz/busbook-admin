@@ -41,7 +41,7 @@
                                 <a href="#"><i class="fa fa-bus"></i><span>Buses</span></a>
                                 <div class="submenu-content">
                                     <a loading="true" href="<?= base_url(); ?>/buses/add" class="menu-item"><i class="ik ik-plus"></i><span>Add Bus</span></a>
-                                    <a loading="true" href="<?= base_url(); ?>/products" class="menu-item"><i class="fas fa-bus-alt"></i><span>Manage Buses</span></a>
+                                    <a loading="true" href="<?= base_url(); ?>/buses" class="menu-item"><i class="fas fa-bus-alt"></i><span>Manage Buses</span></a>
                                 </div>
                             </div>
 

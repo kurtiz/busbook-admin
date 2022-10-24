@@ -82,14 +82,3 @@ $("#cususername").keyup(function() {
         })
     }
 });
-
-$("#user-form").on("submit", function (){
-   let x = $("#cususername").prop("class").split(" ")
-   for(i = 0; i < x.length; i++) {
-       if (x[i].toString() === "form-control-danger") {
-           console.log("danger")
-       }else if (x[i].toString() === "form-control-success"){
-           console.log("success")
-       }
-   }
-});

@@ -896,19 +896,19 @@ if (! function_exists('old'))
 
 if (! function_exists('redirect'))
 {
-	/**
-	 * Convenience method that works with the current global $request and
-	 * $router instances to redirect using named/reverse-routed routes
-	 * to determine the URL to go to. If nothing is found, will treat
-	 * as a traditional redirect and pass the string in, letting
-	 * $response->redirect() determine the correct method and code.
-	 *
-	 * If more control is needed, you must use $response->redirect explicitly.
-	 *
-	 * @param string $route
-	 *
-	 * @return RedirectResponse
-	 */
+    /**
+     * Convenience method that works with the current global $request and
+     * $router instances to redirect using named/reverse-routed routes
+     * to determine the URL to go to. If nothing is found, will treat
+     * as a traditional redirect and pass the string in, letting
+     * $response->redirect() determine the correct method and code.
+     *
+     * If more control is needed, you must use $response->redirect explicitly.
+     *
+     * @param string|null $route
+     *
+     * @return RedirectResponse
+     */
 	function redirect(string $route = null): RedirectResponse
 	{
 		$response = Services::redirectresponse(null, true);
