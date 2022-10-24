@@ -7,13 +7,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Bus | BusBook cPanel</title>
-    <meta property="og:image" content="<?= base_url(); ?>/public/src/img/brand-white.png" />
+    <title>Add Driver | BusBook cPanel</title>
+    <meta property="og:image" content="<?= base_url(); ?>/public/src/img/brand-white.png"/>
     <meta name="description" content="Add new clients or customers to your stores database">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon"href="<?php base_url(); ?>public/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<?php base_url(); ?>public/favicon.ico" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#404E67"/>
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,17 +23,17 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="icon" href="<?=base_url(); ?>/public/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="<?= base_url(); ?>/public/favicon.ico" type="image/x-icon"/>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/ionicons/dist/css/ionicons.min.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/icon-kit/dist/css/iconkit.min.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/dist/css/theme.min.css">
-    <link rel="stylesheet" href="<?=base_url(); ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.css">
-    <script src="<?=base_url(); ?>/public/src/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/ionicons/dist/css/ionicons.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/icon-kit/dist/css/iconkit.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/perfect-scrollbar/css/perfect-scrollbar.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/dist/css/theme.min.css">
+    <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.css">
+    <script src="<?= base_url(); ?>/public/src/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
 <body>
@@ -62,8 +62,8 @@
                             <div class="page-header-title">
                                 <i class="ik ik-inbox bg-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Add Bus</h5>
-                                    <span>Add a Bus</span>
+                                    <h5>Add Driver</h5>
+                                    <span>Add a Driver</span>
                                 </div>
                             </div>
                         </div>
@@ -73,8 +73,9 @@
                                     <li class="breadcrumb-item">
                                         <a loading="true" href="<?= base_url(); ?>"><i class="ik ik-home"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item"><a loading="true" href="<?= base_url(); ?>/buses">Buses</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Add Bus</li>
+                                    <li class="breadcrumb-item"><a loading="true" href="<?= base_url(); ?>/buses">Drivers</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="Driver">Add Driver</li>
                                 </ol>
                             </nav>
                         </div>
@@ -84,22 +85,26 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header"><h3>Add Bus</h3></div>
+                            <div class="card-header"><h3>Add Driver</h3></div>
                             <div class="card-body">
-                                <form action="<?=base_url()?>/buses/add">
-                                <div class="form-group">
-                                    <label for="bus_model">Bus Model</label>
-                                    <input type="text" class="form-control" required id="bus_model" name="bus_model" placeholder="eg. Marcopolo Bus">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bus_capacity">Capacity</label>
-                                    <input type="number" class="form-control" required id="bus_capacity" name="bus_capacity" placeholder="eg. 45">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bus_number">Bus Number</label>
-                                    <input type="text" required class="form-control form-control-uppercase" name="bus_number" id="bus_number" placeholder="eg. GT 457-19">
-                                </div>
-                                <button type="submit" id="submit" class="btn btn-primary mr-2">Submit</button>
+                                <form action="<?= base_url() ?>/drivers/add" method="post">
+                                    <div class="form-group">
+                                        <label for="driver_name">Driver Name</label>
+                                        <input type="text" class="form-control" required id="driver_name"
+                                               name="driver_name" placeholder="eg. Mensah Kay">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="driver_contact">Driver Contact</label>
+                                        <input type="number" class="form-control" required id="driver_contact"
+                                               name="driver_contact" placeholder="eg. 0244785621">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="driver_email">Driver Email</label>
+                                        <input type="email" required class="form-control"
+                                               name="driver_email" id="driver_email"
+                                               placeholder="eg. mensahkay@email.com">
+                                    </div>
+                                    <button type="submit" id="submit" class="btn btn-primary mr-2">Submit</button>
                                 </form>
                             </div>
                         </div>
@@ -110,17 +115,17 @@
         <?= $this->include("widgets/footer"); ?>
     </div>
 </div>
-<script src="<?=base_url(); ?>/public/src/js/vendor/jquery-3.3.1.min.js"></script>
-<script src="<?=base_url(); ?>/public/plugins/popper.js/dist/umd/popper.min.js"></script>
-<script src="<?=base_url(); ?>/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="<?=base_url(); ?>/public/plugins/screenfull/dist/screenfull.js"></script>
-<script src="<?=base_url(); ?>/public/dist/js/theme.min.js"></script>
-<script src="<?=base_url(); ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
-<script src="<?=base_url(); ?>/public/plugins/moment/moment.js"></script>
+<script src="<?= base_url(); ?>/public/src/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="<?= base_url(); ?>/public/plugins/popper.js/dist/umd/popper.min.js"></script>
+<script src="<?= base_url(); ?>/public/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?= base_url(); ?>/public/plugins/screenfull/dist/screenfull.js"></script>
+<script src="<?= base_url(); ?>/public/dist/js/theme.min.js"></script>
+<script src="<?= base_url(); ?>/public/plugins/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+<script src="<?= base_url(); ?>/public/plugins/moment/moment.js"></script>
 <script src="<?= base_url(); ?>/public/plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
 <script>
 
-    $("#user-form").on("submit", function(){
+    $("#user-form").on("submit", function () {
         loading_overlay(1)
     })
 
