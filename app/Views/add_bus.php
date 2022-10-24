@@ -86,7 +86,7 @@
                         <div class="card">
                             <div class="card-header"><h3>Add Bus</h3></div>
                             <div class="card-body">
-                                <form action="<?=base_url()?>/buses/add">
+                                <form action="<?=base_url()?>/buses/add" method="post">
                                 <div class="form-group">
                                     <label for="bus_model">Bus Model</label>
                                     <input type="text" class="form-control" required id="bus_model" name="bus_model" placeholder="eg. Marcopolo Bus">
