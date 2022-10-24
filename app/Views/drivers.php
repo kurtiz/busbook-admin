@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Buses | BusBook cPanel</title>
+    <title>Drivers | BusBook cPanel</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,8 +70,8 @@
                             <div class="page-header-title">
                                 <i class="ik ik-grid bg-blue"></i>
                                 <div class="d-inline">
-                                    <h5>Buses</h5>
-                                    <span>All buses in your inventory</span>
+                                    <h5>Drivers</h5>
+                                    <span>All drivers in your inventory</span>
                                 </div>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                         <a id="domain" loading="true" href="<?= base_url(); ?>"><i
                                                     class="ik ik-home"></i></a>
                                     </li>
-                                    <li class="breadcrumb-item"><a loading="true" href="<?= base_url(); ?>/buses">Buses</a>
+                                    <li class="breadcrumb-item"><a loading="true" href="<?= base_url(); ?>/drivers">Drivers</a>
                                     </li>
                                 </ol>
                             </nav>
@@ -94,37 +94,37 @@
                     <div class="col-sm-12">
                         <div class="card table-card">
                             <div class="card-header d-block">
-                                <h3>Buses</h3>
+                                <h3>Drivers</h3>
                             </div>
                             <div class="card-body">
                                 <div class="col-md-12 table-responsive">
-                                    <table id="bus_data_table" class="bus_table nowrap table">
-                                        <?php if (is_array($buses)): ?>
+                                    <table id="driver_data_table" class="driver_table nowrap table">
+                                        <?php if (is_array($drivers)): ?>
                                             <thead>
                                             <tr>
-                                                <th>Bus Model</th>
-                                                <th>Bus Capacity</th>
-                                                <th>Bus Number</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Contact</th>
                                                 <th class="nosort">&nbsp;</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <?php foreach ($buses as $row): ?>
-                                            <tr id="bus<?= $row['bus_id'] ?>">
-                                                <td id="name<?= $row['bus_id'] ?>"><?= $row['bus_model'] ?></td>
-                                                <td><?= $row['bus_capacity'] ?></td>
-                                                <td><?= $row['bus_number'] ?></td>
+                                            <?php foreach ($drivers as $row): ?>
+                                            <tr id="driver<?= $row['driver_id'] ?>">
+                                                <td id="name<?= $row['driver_id'] ?>"><?= $row['driver_name'] ?></td>
+                                                <td><?= $row['driver_email'] ?></td>
+                                                <td><?= $row['driver_contact'] ?></td>
                                                 <td>
                                                     <div class="table-actions">
-                                                        <a href="<?= base_url(); ?>/buses/view/<?= $row['bus_id'] ?>"><i
+                                                        <a href="<?= base_url(); ?>/drivers/view/<?= $row['driver_id'] ?>"><i
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title="View" onclick="loading_overlay(1)"
                                                                     class="ik ik-eye text-blue"></i></a>
-                                                        <a href="javascript:edit('<?= $row['bus_id'] ?>')"><i
+                                                        <a href="javascript:edit('<?= $row['driver_id'] ?>')"><i
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title="Edit"
                                                                     class="ik ik-edit-2 text-green"></i></a>
-                                                        <a href="javascript:delete_bus('<?= $row['bus_id'] ?>')"><i
+                                                        <a href="javascript:delete_driver('<?= $row['driver_id'] ?>')"><i
                                                                     data-toggle="tooltip" data-placement="top"
                                                                     title="Delete"
                                                                     class="ik ik-trash-2 text-red"></i></a>
@@ -176,7 +176,7 @@
 <script src="<?= base_url(); ?>/public/js/print.js"></script>
 <link rel="stylesheet" href="<?= base_url(); ?>/public/plugins/datatables/css/buttons.dataTables.min.css">
 <script>
-    let table = $('.bus_table').DataTable({
+    let table = $('.driver_table').DataTable({
         responsive: true,
         dom: 'Bflrtip',
         buttons: [
@@ -253,7 +253,7 @@
 
         //  Shows Pop Up to confirm edit event
         Swal.fire({
-            title: 'Are you sure you want to edit this bus?',
+            title: 'Are you sure you want to edit this driver?',
             imageHeight: 100,
             text: name,
             showDenyButton: true,
@@ -266,7 +266,7 @@
                 // shows a loading screen overlay
                 loading_overlay(1)
                 // redirects to the edit page
-                window.location.assign(domain + "/buses/edit/" + id)
+                window.location.assign(domain + "/drivers/edit/" + id)
             } else if (result.isDenied) { // when the denied button (no) is clicked
                 // Denial message pop up
                 Swal.fire('Edit Discarded', '', 'info');
@@ -276,17 +276,17 @@
 
 
     /**
-     * sends a post request to delete a bus for the list
-     * @param {string | int | array | any} id the id of the bus to be deleted
+     * sends a post request to delete a driver for the list
+     * @param {string | int | array | any} id the id of the driver to be deleted
      */
-    function delete_bus(id) {
+    function delete_driver(id) {
         let domain = $("#domain").prop("href");
         if (typeof (id) === 'object' && id.length > 0) {
             console.log(id.length)
 
             //  Shows Pop Up to confirm edit event
             Swal.fire({
-                title: 'Are you sure you want to delete these buses?',
+                title: 'Are you sure you want to delete these drivers?',
                 showDenyButton: true,
                 showCancelButton: true,
                 confirmButtonText: `Yes`,
@@ -294,12 +294,12 @@
             }).then((result) => {
                 //  when confirm button (yes) is clicked
                 if (result.isConfirmed) {
-                    // post request to delete bus
+                    // post request to delete driver
                     let success = [];
                     let error = [];
                     for (let i = 0; i < id.length; i++) {
-                        let name = $("#name" + id[i].replace("bus", "")).text();
-                        url = (domain + "/buses/delete/" + id[i].replace("bus", ""));
+                        let name = $("#name" + id[i].replace("driver", "")).text();
+                        url = (domain + "/drivers/delete/" + id[i].replace("driver", ""));
                         $.post(url, function (data) {
                             try {
                                 data = JSON.parse(data)
@@ -308,9 +308,9 @@
                             }
                             if (data.msg === "success") {
 
-                                let table = $("#bus_data_table");
+                                let table = $("#driver_data_table");
                                 let data_table = table.dataTable();
-                                let index = findProductRow(table, id[i].replace("bus", ""));
+                                let index = findProductRow(table, id[i].replace("driver", ""));
                                 data_table.fnDeleteRow(index);
 
                                 success[i] = name;
@@ -354,11 +354,11 @@
         } else if (typeof (id) === 'string') {
             let img = $("#img" + id).prop("src");
             let name = $("#name" + id).text();
-            url = (domain + "/buses/delete/" + id);
+            url = (domain + "/drivers/delete/" + id);
 
             //  Shows Pop Up to confirm edit event
             Swal.fire({
-                title: 'Are you sure you want to delete this bus?',
+                title: 'Are you sure you want to delete this driver?',
                 text: name,
                 showDenyButton: true,
                 showCancelButton: true,
@@ -367,7 +367,7 @@
             }).then((result) => {
                 //  when confirm button (yes) is clicked
                 if (result.isConfirmed) {
-                    // post request to delete bus
+                    // post request to delete driver
                     $.post(url, function (data) {
                         try {
                             data = JSON.parse(data)
@@ -376,7 +376,7 @@
                         }
                         if (data.msg === "success") {
 
-                            let table = $("#bus_data_table");
+                            let table = $("#driver_data_table");
                             let data_table = table.dataTable();
                             let index = findProductRow(table, id);
                             data_table.fnDeleteRow(index);
@@ -422,8 +422,8 @@
     /**
      *
      * @param element {object | any} the element
-     * @param id the id of the bus to be deleted
-     * @returns {number} returns the index of the row of the bus to be deleted
+     * @param id the id of the driver to be deleted
+     * @returns {number} returns the index of the row of the driver to be deleted
      */
     function findProductRow(element, id) {
         table = element.dataTable();
@@ -431,7 +431,7 @@
         let index;
         for (i = 0; i < table.length; i++) {
             // console.log(table[i].DT_RowId)
-            if (table[i].DT_RowId === "bus" + id) {
+            if (table[i].DT_RowId === "driver" + id) {
                 index = i;
                 break;
             }
@@ -444,8 +444,8 @@
             let ids = table.rows(
                 {selected: true}
             ).ids();
-            // console.log(ids[0].replace("bus",""))
-            delete_bus(ids)
+            // console.log(ids[0].replace("driver",""))
+            delete_driver(ids)
         }
     });
 

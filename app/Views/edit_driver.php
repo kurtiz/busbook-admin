@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>View Bus | BusBook cPanel</title>
+    <title>Edit Driver | BusBook cPanel</title>
     <meta property="og:image" content="<?= base_url(); ?>/public/src/img/brand-white.png"/>
     <meta name="description" content="Add new clients or customers to your stores database">
     <meta name="keywords" content="">
@@ -63,8 +63,8 @@
                             <div class="page-header-title">
                                 <i class="ik ik-inbox bg-blue"></i>
                                 <div class="d-inline">
-                                    <h5>View Bus</h5>
-                                    <span>View Bus Details</span>
+                                    <h5>Edit Driver</h5>
+                                    <span>Edit Driver Details</span>
                                 </div>
                             </div>
                         </div>
@@ -75,8 +75,8 @@
                                         <a loading="true" href="<?= base_url(); ?>"><i class="ik ik-home"></i></a>
                                     </li>
                                     <li class="breadcrumb-item"><a loading="true"
-                                                                   href="<?= base_url(); ?>/buses">Buses</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">View Bus</li>
+                                                                   href="<?= base_url(); ?>/drivers">Drivers</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Edit Driver</li>
                                 </ol>
                             </nav>
                         </div>
@@ -86,28 +86,28 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header"><h3>View Bus</h3></div>
+                            <div class="card-header"><h3>Edit Driver</h3></div>
                             <div class="card-body">
-                                <form action="<?=base_url()?>/buses/add">
+                                <form action="" method="post">
                                 <div class="form-group">
-                                    <label for="bus_model">Bus Model</label>
-                                    <input type="text" class="form-control" value="<?= $bus->bus_model ?>" disabled
-                                           required id="bus_model" name="bus_model" placeholder="eg. Marcopolo Bus">
+                                    <label for="driver_name">Driver Name</label>
+                                    <input type="text" class="form-control" value="<?= $driver->driver_name ?>"
+                                           required id="driver_name" name="driver_name" placeholder="eg. Mensah Kay">
                                 </div>
                                 <div class="form-group">
-                                    <label for="bus_capacity">Capacity</label>
-                                    <input type="number" class="form-control" value="<?= $bus->bus_capacity ?>" disabled
-                                           required id="bus_capacity" name="bus_capacity" placeholder="eg. 45">
+                                    <label for="driver_contact">Driver Contact</label>
+                                    <input type="number" class="form-control" value="<?= $driver->driver_contact ?>"
+                                           required id="driver_contact" name="driver_contact" placeholder="eg. 0244856578">
                                 </div>
                                 <div class="form-group">
-                                    <label for="bus_number">Bus Number</label>
-                                    <input type="text" required value="<?= $bus->bus_number ?>" disabled
-                                           class="form-control form-control-uppercase" name="bus_number" id="bus_number"
+                                    <label for="driver_email">Driver Email</label>
+                                    <input type="email" required value="<?= $driver->driver_email ?>"
+                                           class="form-control" name="driver_email" id="driver_email"
                                            placeholder="eg. GT 457-19">
                                 </div>
-                                <a href="<?= base_url() ?>/buses/edit/<?= $bus->bus_id ?>" class="btn btn-success mr-2">Edit</a>
-                                <button type="button" id="deleteBus" class="btn btn-danger mr-2">Delete</button>
-                                <?= form_close() ?>
+                                <button type="reset" id="discardDriver" class="btn btn-danger mr-2">Discard</button>
+                                <button type="submit" class="btn btn-primary mr-2">Update</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -175,43 +175,23 @@
     endif;
     ?>
 
-    $("#deleteBus").on("click", function(){
+    $("#discardDriver").on("click", function(){
         Swal.fire({
-            title: 'Are you sure you want to delete this bus?',
+            title: 'Are you sure you want to discard changes?',
             text: name,
             showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: `Delete`,
-            denyButtonText: `Don't Delete`,
+            confirmButtonText: `Discard`,
+            denyButtonText: `Continue Editing`,
             confirmButtonColor: "#f5365c",
             denyButtonColor: "#007bff",
         }).then((result) => {
             if (result.isConfirmed) { //  when confirm button (yes) is clicked
-                $.post("<?=base_url()?>/buses/delete/<?=$bus->bus_id?>", function (data) {
-                    try {
-                        data = JSON.parse(data)
-                    } catch (e) {
-                        data.msg = "error"
-                    }
-                    if (data.msg === "success") {
-                        Swal.fire('Bus successfully deleted!', '', 'success')
-                        setTimeout(() => {
-                            location.href = "<?=base_url()?>/buses"
-                        }, 1500)
-                    } else {
-                        $.toast({
-                            text: 'An error occured while deleting this bus',
-                            showHideTransition: 'fade',
-                            icon: 'error',
-                            position: "top-right",
-                            bgColor: '#f5365c',
-                            textColor: 'white'
-                        })
-                    }
-                })
-            } else if (result.isDenied) { // when the denied button (no) is clicked
-                // Denial message pop up
-                Swal.fire('Deletion Discarded', '', 'info')
+                Swal.fire('Changes Discarded', '', 'info')
+                setTimeout(() => {
+                    location.href = "<?=base_url()?>/drivers/view/<?=$driver->driver_id?>"
+                }, 1200)
+
             }
         });
     })
