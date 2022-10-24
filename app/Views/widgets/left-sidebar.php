@@ -21,7 +21,7 @@
                             <div class="nav-item <?=session()->getTempdata('profile')?>">
                                 <a loading="true" href="<?= base_url(); ?>/profile"><i class="ik ik-user"></i><span>Profile</span></a>
                             </div>
-                            <div class="nav-lavel">Store Management</div>
+                            <div class="nav-lavel">Management</div>
                             <div class="nav-item <?=session()->getTempdata('tickets')?> has-sub">
                                 <a href="#" ><i class="fas fa-file-invoice"></i><span>Bookings</span></a>
                                 <div class="submenu-content">
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
 
-                            <div class="nav-item <?=session()->getTempdata('destination')?> has-sub">
+                            <div class="nav-item <?=session()->getTempdata('destinations')?> has-sub">
                                 <a href="#"><i class="fa fa-search-location"></i><span>Destinations</span></a>
                                 <div class="submenu-content">
                                     <a loading="true" href="<?= base_url(); ?>/destinations/add" class="menu-item"><i class="ik ik-plus"></i><span>Add Destination</span></a>

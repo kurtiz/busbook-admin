@@ -3,25 +3,25 @@
 namespace App\Controllers;
 
 use App\Libraries\ActiveSession;
-use App\Models\BusesModel;
+use App\Models\DestinationsModel;
 use CodeIgniter\Controller;
 use App\Models\DashboardModel;
 
 
-class Buses extends Controller
+class Destinations extends Controller
 {
 
     public $dashModel;
     public $admin_id;
-    public $busModel;
+    public $destinationModel;
 
     public function __construct()
     {
         $this->dashModel = new DashboardModel();
-        $this->busModel = new BusesModel();
+        $this->destinationModel = new DestinationsModel();
         $this->admin_id = session()->get("admin_id");
         helper("form");
-        session()->setTempdata('buses', 'active', 1);
+        session()->setTempdata('destinations', 'active', 1);
     }
 
     public function index()
@@ -31,9 +31,9 @@ class Buses extends Controller
 
 
         $data['userdata'] = $this->dashModel->getLoggedUserData((string)$this->admin_id);
-        $data['buses'] = $this->busModel->getBuses();
+        $data['destinations'] = $this->destinationModel->getDestinations();
 
-        return view('buses', $data);
+        return view('destinations', $data);
     }
 
     public function add()
@@ -44,79 +44,75 @@ class Buses extends Controller
 
         if ($this->request->getMethod() == "post") {
             $fields = [
-                "bus_id" => hash("md5", "bus" . date("ymdhisa")),
-                "bus_model" => $this->request->getVar("bus_model"),
-                "bus_capacity" => $this->request->getVar("bus_capacity"),
-                "bus_number" => strtoupper($this->request->getVar("bus_number")),
+                "destination_id" => hash("md5", "bus" . date("ymdhisa")),
+                "destination" => $this->request->getVar("destination")
             ];
-            $addedBus = $this->busModel->addBus($fields);
+            $updateDestination = $this->destinationModel->addDestination($fields);
 
-            if ($addedBus) {
-                session()->setTempdata("success", $fields["bus_model"] . " was added successfully", 3);
+            if ($updateDestination) {
+                session()->setTempdata("success", $fields["destination"] . " was added successfully", 3);
             } else {
                 session()->setTempdata("error", "An Error has occurred while adding the bus", 3);
             }
         }
 
-        return view("add_bus", $data);
+        return view("add_destination", $data);
     }
 
-    public function view($bus_id)
+    public function view($destination_id)
     {
         (new ActiveSession)->check("logged_user");
 
         $data['userdata'] = $this->dashModel->getLoggedUserData((string)$this->admin_id);
 
-        $data['bus'] = $this->busModel->getBus($bus_id);
-        if ($data['bus']) {
-            return view("view_bus", $data);
+        $data['destination'] = $this->destinationModel->getDestination($destination_id);
+        if ($data['destination']) {
+            return view("view_destination", $data);
         }
-        return redirect()->to(base_url()."/buses");
+        return redirect()->to(base_url()."/destinations");
     }
 
-    public function edit($bus_id){
+    public function edit($destination_id){
         (new ActiveSession)->check("logged_user");
 
         $data['userdata'] = $this->dashModel->getLoggedUserData((string)$this->admin_id);
 
         if ($this->request->getMethod() == "post") {
             $fields = [
-                "bus_model" => $this->request->getVar("bus_model"),
-                "bus_capacity" => $this->request->getVar("bus_capacity"),
-                "bus_number" => strtoupper($this->request->getVar("bus_number")),
+                "destination" => $this->request->getVar("destination"),
             ];
 
             $clause = [
-                "bus_id" => $bus_id
+                "destination_id" => $destination_id
             ];
 
-            $updatedBus = $this->busModel->updateBus($clause, $fields);
+            $updatedBus = $this->destinationModel->updateDestination($clause, $fields);
 
             if ($updatedBus) {
-                session()->setTempdata("success", $fields["bus_model"] . " was updated successfully", 3);
+                session()->setTempdata("success", $fields["destination"] . " has been updated successfully", 3);
             } else {
                 session()->setTempdata("error", "An Error has occurred while updating bus info", 3);
             }
-            return redirect()->to(base_url(). "/buses/view/" . $bus_id);
+            return redirect()->to(base_url(). "/destinations/view/" . $destination_id);
         }
 
-        $data['bus'] = $this->busModel->getBus($bus_id);
-        if ($data['bus']) {
-            return view("edit_bus", $data);
+        $data['destination'] = $this->destinationModel->getDestination($destination_id);
+        if ($data['destination']) {
+            return view("edit_destination", $data);
         }
-        return redirect()->to(base_url()."/buses");
+        return redirect()->to(base_url()."/destinations");
     }
     
     
-    public function delete($bus_id){
+    public function delete($destination_id){
         (new ActiveSession)->check("logged_user");
 
         if($this->request->getMethod() == "post"){
             $clause = [
-                "bus_id" => $bus_id
+                "destination_id" => $destination_id
             ];
 
-            if($this->busModel->deleteBus($clause)){
+            if($this->destinationModel->deleteDestination($clause)){
                 $message = ['msg' => "success"];
             } else {
                 $message = ['msg' => "error"];
