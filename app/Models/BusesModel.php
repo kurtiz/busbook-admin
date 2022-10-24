@@ -53,13 +53,13 @@ class BusesModel extends Model
      * @return array|false returns the product info as an array if the operation was successful
      * and returns false otherwise
      */
-    public function getBus(int $bus_id)
+    public function getBus(string $bus_id)
     {
         $builder = $this->db->table($this->tbl);
-        $builder->where('product_id', $bus_id);
+        $builder->where('bus_id', $bus_id);
         $result = $builder->get();
-        if (count($result->getResultArray()) > 0) {
-            return $result->getResultArray();
+        if ($result->resultID->num_rows == 1) {
+            return $result->getRowObject();
         } else {
             return false;
         }
@@ -79,6 +79,19 @@ class BusesModel extends Model
         } else {
             return false;
         }
+    }
+
+    public function updateBus(array $clause, array $fields)
+    {
+        $builder = $this->db->table($this->tbl);
+        $builder->where($clause);
+        $builder->update($fields);
+        if ($this->db->affectedRows() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
 }

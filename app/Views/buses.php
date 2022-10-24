@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Products | MiCasa cPanel</title>
+    <title>Buses | BusBook cPanel</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Hello World">
-    <meta name="msapplication-TileImage" content="<?php base_url(); ?>public/favicon.ico">
+    <meta name="msapplication-TileImage" content="<?= base_url(); ?>public/favicon.ico">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -221,11 +221,6 @@
                 attr: {
                     id: 'print_btn'
                 },
-                repeatingHead: {
-                    logo: '<?=base_url()?>/public/favicon.ico',
-                    logoPosition: 'right',
-                    logoStyle: ''
-                },
             },
         ],
 
@@ -306,7 +301,11 @@
                         let name = $("#name" + id[i].replace("bus", "")).text();
                         url = (domain + "/buses/delete/" + id[i].replace("bus", ""));
                         $.post(url, function (data) {
-                            data = JSON.parse(data);
+                            try {
+                                data = JSON.parse(data)
+                            } catch (e) {
+                                data.msg = "error"
+                            }
                             if (data.msg === "success") {
 
                                 let table = $("#bus_data_table");
@@ -360,8 +359,6 @@
             //  Shows Pop Up to confirm edit event
             Swal.fire({
                 title: 'Are you sure you want to delete this bus?',
-                imageUrl: img,
-                imageHeight: 100,
                 text: name,
                 showDenyButton: true,
                 showCancelButton: true,
@@ -372,7 +369,11 @@
                 if (result.isConfirmed) {
                     // post request to delete bus
                     $.post(url, function (data) {
-                        data = JSON.parse(data);
+                        try {
+                            data = JSON.parse(data)
+                        } catch (e) {
+                            data.msg = "error"
+                        }
                         if (data.msg === "success") {
 
                             let table = $("#bus_data_table");
