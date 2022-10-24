@@ -22,7 +22,7 @@
                                 <a loading="true" href="<?= base_url(); ?>/profile"><i class="ik ik-user"></i><span>Profile</span></a>
                             </div>
                             <div class="nav-lavel">Management</div>
-                            <div class="nav-item <?=session()->getTempdata('tickets')?> has-sub">
+                            <div class="nav-item <?=session()->getTempdata('bookings')?> has-sub">
                                 <a href="#" ><i class="fas fa-file-invoice"></i><span>Bookings</span></a>
                                 <div class="submenu-content">
                                     <a href="<?= base_url(); ?>/bookings" class="menu-item"><i class="fas fa-file-invoice"></i><span>Manage Bookings</span></a>
