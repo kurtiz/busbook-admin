@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\LoginModel;
+use Faker\Factory;
 
 class Home extends BaseController
 {
@@ -61,7 +62,6 @@ class Home extends BaseController
     }
 
     public function test(){
-        echo hash("gost-crypto",
-                hash("md5", "hello123") . hash("md4", "hello123"));
+
     }
 }
