@@ -1,0 +1,56 @@
+{
+    "packages": [
+        {
+            "name": "robinthehood/terminal",
+            "version": "0.1.4",
+            "version_normalized": "0.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobinTheHood/Terminal.git",
+                "reference": "9675e89f12127f76f77c7d9510f2c5c763e3bba1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobinTheHood/Terminal/zipball/9675e89f12127f76f77c7d9510f2c5c763e3bba1",
+                "reference": "9675e89f12127f76f77c7d9510f2c5c763e3bba1",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0 || ^8.0"
+            },
+            "time": "2022-04-19T13:32:53+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "RobinTheHood\\Terminal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Wieschendorf",
+                    "email": "mail@robinwieschendorf.de",
+                    "homepage": "http://robinwieschendorf.de",
+                    "role": "Project Founder"
+                }
+            ],
+            "description": "With Terminal you can easily output colored text on the console with php.",
+            "keywords": [
+                "color",
+                "escape sequences",
+                "terminal"
+            ],
+            "support": {
+                "issues": "https://github.com/RobinTheHood/Terminal/issues",
+                "source": "https://github.com/RobinTheHood/Terminal/tree/0.1.4"
+            },
+            "install-path": "../robinthehood/terminal"
+        }
+    ],
+    "dev": true,
+    "dev-package-names": []
+}

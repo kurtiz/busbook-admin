@@ -43,9 +43,9 @@ class TicketsSeeder extends Seeder
             $ticketModel->addTicket(
                 [
                     "ticket_id" => hash("md5", "ticket" . date("ymdhisa") . random_int(84, 2598654784)),
-                    "destination_id" => $destinations[random_int(0,47)]["destination_id"],
+                    "destination_id" => $destinations[random_int(0,44)]["destination_id"],
                     "bus_id" => $buses[random_int(0,98)]["bus_id"],
-                    "driver_id" => $drivers[random_int(0,46)]["driver_id"],
+                    "driver_id" => $drivers[random_int(0,44)]["driver_id"],
                     "departure_date" => explode(" ", $date)[0],
                     "departure_time" => $faker->time("H:i:s"),
                     "ticket_image" => $files[random_int(0,7)],

@@ -1,0 +1,12 @@
+{
+    "name": "jenam/libraries",
+    "authors": [
+        {
+            "name": "Aaron Will Djaba",
+            "email": "papiliocurtis@gmail.com"
+        }
+    ],
+    "require": {
+        "robinthehood/terminal": "^0.1.4"
+    }
+}
