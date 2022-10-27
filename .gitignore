@@ -125,6 +125,4 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
-public/uploads
-.htaccess
-app/Config/App.php
+
