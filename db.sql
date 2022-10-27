@@ -1,6 +1,6 @@
 START TRANSACTION;
 CREATE DATABASE `bus_ticket`;
-USE `sbus_ticketing`;
+USE `bus_ticketing`;
 
 CREATE TABLE `admin` (
   `admin_id` varchar(255) NOT NULL,
