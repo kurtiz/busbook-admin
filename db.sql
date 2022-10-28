@@ -48,6 +48,7 @@ CREATE TABLE `driver` (
 
 CREATE TABLE `ticket` (
   `ticket_id` varchar(255) NOT NULL,
+  `from_destination_id` varchar(255) NOT NULL,
   `destination_id` varchar(255) NOT NULL,
   `departure_time` time NOT NULL,
   `departure_date` date NOT NULL,
