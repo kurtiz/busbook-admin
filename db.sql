@@ -1,4 +1,3 @@
-START TRANSACTION;
 CREATE DATABASE `bus_ticket`;
 USE `bus_ticketing`;
 
@@ -107,4 +106,3 @@ ALTER TABLE `ticket`
   ADD CONSTRAINT `bus_id` FOREIGN KEY (`bus_id`) REFERENCES `bus` (`bus_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dest_id` FOREIGN KEY (`destination_id`) REFERENCES `destination` (`destination_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `driver_id` FOREIGN KEY (`driver_id`) REFERENCES `driver` (`driver_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
