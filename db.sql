@@ -1,5 +1,5 @@
 CREATE DATABASE `bus_ticket`;
-USE `bus_ticketing`;
+USE `bus_ticket`;
 
 CREATE TABLE `admin` (
   `admin_id` varchar(255) NOT NULL,
