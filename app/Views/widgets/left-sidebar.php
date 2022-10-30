@@ -25,7 +25,7 @@
                             <div class="nav-item <?=session()->getTempdata('bookings')?> has-sub">
                                 <a href="#" ><i class="fas fa-file-invoice"></i><span>Bookings</span></a>
                                 <div class="submenu-content">
-                                    <a href="<?= base_url(); ?>/bookings" class="menu-item"><i class="fas fa-file-invoice"></i><span>Manage Bookings</span></a>
+                                    <a href="<?= base_url(); ?>/booking" class="menu-item"><i class="fas fa-file-invoice"></i><span>Manage Bookings</span></a>
                                 </div>
                             </div>
 
