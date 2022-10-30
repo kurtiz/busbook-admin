@@ -21,10 +21,11 @@ CREATE TABLE `booking` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `booking_details` (
-  `bk_deatils_id` varchar(255) NOT NULL,
+  `bk_details_id` varchar(255) NOT NULL,
   `bk_id` varchar(255) NOT NULL,
   `tk_id` varchar(255) NOT NULL,
-  `tk_cost` decimal(19,2) NOT NULL
+  `tk_cost` decimal(19,2) NOT NULL,
+  `quantity` int NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `bus` (
@@ -74,7 +75,7 @@ ALTER TABLE `booking`
   ADD KEY `usr_id` (`user_id`);
 
 ALTER TABLE `booking_details`
-  ADD PRIMARY KEY (`bk_deatils_id`),
+  ADD PRIMARY KEY (`bk_details_id`),
   ADD KEY `bk_id` (`bk_id`),
   ADD KEY `tk_id` (`tk_id`);
 
